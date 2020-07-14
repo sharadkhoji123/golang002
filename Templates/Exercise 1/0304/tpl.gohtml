@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Restaurants</title>
+</head>
+<body>
+{{range .}}
+    {{.Name}}<br>
+        {{range .Mtype}}
+            {{.Breakfast}}-{{.Lunch}}- {{.Dinner}}<br>
+        {{end}}
+{{end}}
+</body>
+</html>

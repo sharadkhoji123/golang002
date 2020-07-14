@@ -47,7 +47,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
+	defer np.Close()
 	err = tpl.Execute(np, y)
 	if err != nil {
 		log.Fatalln(err)

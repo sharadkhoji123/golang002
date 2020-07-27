@@ -16,8 +16,7 @@ func main() {
 			break
 		}
 	}
-	time.Sleep(1 * time.Minute)
-
+	time.Sleep(20 * time.Second)
 }
 
 func gen(ctx context.Context) <-chan int {

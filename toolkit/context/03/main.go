@@ -30,30 +30,31 @@ func foo(w http.ResponseWriter, req *http.Request) {
 	fmt.Fprintln(w, results)
 }
 
-func dbAccess(ctx context.Context) (int, error) {
+func dbAccess(ctx context.Context) (string, error) {
 
-	ctx, cancel := context.WithTimeout(ctx, 10*time.Second)
+	ctx, cancel := context.WithTimeout(ctx, 5*time.Second)
 	defer cancel()
 
-	ch := make(chan int)
-
+	// ch := make(chan int)
+	ch := make(chan string)
 	go func() {
 		// ridiculous long running task
-		uid := ctx.Value("userID").(int)
-		time.Sleep(1 * time.Second)
+		// uid := ctx.Value("userID").(int)
+		uname := ctx.Value("fname").(string)
+		time.Sleep(6 * time.Second)
 
 		// check to make sure we're not running in vain
 		// if ctx.Done() has
 		if ctx.Err() != nil {
 			return
 		}
-
-		ch <- uid
+		ch <- uname
+		// ch <- uid
 	}()
 
 	select {
 	case <-ctx.Done():
-		return 0, ctx.Err()
+		return "finish", ctx.Err()
 	case i := <-ch:
 		return i, nil
 	}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PhotoBlog</title>
+</head>
+<body>
+
+Welcome to DigiPic Blog World
+
+<h1>Your Uploaded Pictures</h1>
+{{range .}}
+<img src="/encpic/public/pics/{{.}}" width="400px">
+{{end}}
+
+<h1> Upload More Pictures</h1>
+
+<form method="post" enctype="multipart/form-data">
+    <input type="file" name="nf">
+    <input type="submit">
+</form>
+
+</body>
+</html>
+<h2>Logout <a href="/logout">Logout</a></h2>
+</body>
+</html>

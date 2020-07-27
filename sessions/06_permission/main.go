@@ -140,6 +140,7 @@ func login(w http.ResponseWriter, req *http.Request) {
 		http.Redirect(w, req, "/", http.StatusSeeOther)
 
 	}
+	
 
 	tpl.ExecuteTemplate(w, "login.gohtml", nil)
 }
